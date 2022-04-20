@@ -35,7 +35,7 @@ canvas {
 div[outer-radical] {
   background: rgb(63, 63, 63);
   border-radius: 20px;
-  padding: 5%;
+  padding: 3%;
   height: auto;
   width: calc(300px + 10%);
   display: flex;
@@ -53,5 +53,5 @@ div[bottom-text] {
 
 span[strong-num] {
   font-weight: 900;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
 }
