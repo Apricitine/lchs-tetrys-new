@@ -19,4 +19,4 @@ Full credit goes to @kris10ansn for the vast majority of the code here. I highly
 > [Twitter](https://twitter.com/kris10ansn)  
 > [Website](https://kris10ansn.github.io/)    
 
-Have fun!
+Have fun! :)
