@@ -261,7 +261,7 @@
           (function () {
             let e = "You hit the limit!",
               t = 0.05 * gridMatrix;
-            (ctxMatrix.font = gridMatrix + "px Arial"),
+            (ctxMatrix.font = gridMatrix + "px monospace"),
               (ctxMatrix.fillStyle = "#ff5b5b"),
               ctxMatrix.fillText(
                 e,
@@ -271,7 +271,7 @@
                 8 * gridMatrix + t
               );
             let r = "Press any key to restart";
-            (ctxMatrix.font = 0.7 * gridMatrix + "px Arial"),
+            (ctxMatrix.font = 0.7 * gridMatrix + "px monospace"),
               (ctxMatrix.fillStyle = "#ff5b5b"),
               ctxMatrix.fillText(
                 r,
@@ -280,14 +280,14 @@
                 t,
                 9 * gridMatrix + t
               ),
-              (ctxMatrix.font = gridMatrix + "px Arial"),
+              (ctxMatrix.font = gridMatrix + "px monospace"),
               (ctxMatrix.fillStyle = "red"),
               ctxMatrix.fillText(
                 e,
                 workingCanvas.width / 2 - ctxMatrix.measureText(e).width / 2,
                 8 * gridMatrix
               ),
-              (ctxMatrix.font = 0.7 * gridMatrix + "px Arial"),
+              (ctxMatrix.font = 0.7 * gridMatrix + "px monospace"),
               (ctxMatrix.fillStyle = "red"),
               ctxMatrix.fillText(
                 r,
@@ -320,7 +320,7 @@
           console.error(e);
         }
       null == currentHighScore && (currentHighScore = 0),
-        (ctxMatrix.font = 2 * gridMatrix + "px Arial"),
+        (ctxMatrix.font = 2 * gridMatrix + "px monospace"),
         (ctxMatrix.fillStyle = "#fff"),
         ctxMatrix.fillText(
           currentScore,
@@ -328,7 +328,7 @@
           ctxMatrix.measureText(currentScore).width / 2,
           2.5 * gridMatrix
         ),
-        (ctxMatrix.font = 0.5 * gridMatrix + "px Arial"),
+        (ctxMatrix.font = 0.5 * gridMatrix + "px monospace"),
         (ctxMatrix.fillStyle = "#fff"),
         ctxMatrix.fillText(
           "High score: " + currentHighScore,
