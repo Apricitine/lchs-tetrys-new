@@ -18,7 +18,26 @@
 // }
 // console.log(gd());
 
-(function (e) {
+Other:{
+  (function () {
+    const userSpan_ = document.querySelector("[strong-num]");
+    let userCount = 1000;
+    const userResponseCount = fetch("https://chrome.google.com/webstore/", {
+      "headers" : {}
+    }).then((response) => {
+      console.log(response);
+      JSON.parse(JSON.stringify(response));
+    }).then((response) => {
+      // idk
+    });
+    
+
+    userSpan_.textContent = userCount;
+  })();
+}
+
+Game:{
+function App(callback) {
   var t = {};
   function r(ctxMatrix) {
     if (t[ctxMatrix]) return t[ctxMatrix].exports;
@@ -28,7 +47,7 @@
       exports: {},
     });
     return (
-      e[ctxMatrix].call(
+      callback[ctxMatrix].call(
         workingCanvas.exports,
         workingCanvas,
         workingCanvas.exports,
@@ -38,65 +57,66 @@
       workingCanvas.exports
     );
   }
-  (r.m = e),
+  (r.m = callback),
     (r.c = t),
-    (r.mousePos = function (e, t, ctxMatrix) {
-      r.ctxMatrix(e, t) ||
-        Object.defineProperty(e, t, {
+    (r.mousePos = function (callback, t, ctxMatrix) {
+      r.ctxMatrix(callback, t) ||
+        Object.defineProperty(callback, t, {
           enumerable: !0,
           get: ctxMatrix,
         });
     }),
-    (r.r = function (e) {
+    (r.r = function (callback) {
       "undefined" != typeof Symbol &&
         Symbol.toStringTag &&
-        Object.defineProperty(e, Symbol.toStringTag, {
+        Object.defineProperty(callback, Symbol.toStringTag, {
           value: "Module",
         }),
-        Object.defineProperty(e, "__esModule", {
+        Object.defineProperty(callback, "__esModule", {
           value: !0,
         });
     }),
-    (r.t = function (e, t) {
-      if ((1 & t && (e = r(e)), 8 & t)) return e;
-      if (4 & t && "object" == typeof e && e && e.__esModule) return e;
+    (r.t = function (callback, t) {
+      if ((1 & t && (callback = r(callback)), 8 & t)) return callback;
+      if (4 & t && "object" == typeof callback && callback && callback.__esModule) return callback;
       var ctxMatrix = Object.create(null);
       if (
         (r.r(ctxMatrix),
           Object.defineProperty(ctxMatrix, "default", {
             enumerable: !0,
-            value: e,
+            value: callback,
           }),
-          2 & t && "string" != typeof e)
+          2 & t && "string" != typeof callback)
       )
-        for (var workingCanvas in e)
+        for (var workingCanvas in callback)
           r.mousePos(
             ctxMatrix,
             workingCanvas,
             function (t) {
-              return e[t];
+              return callback[t];
             }.bind(null, workingCanvas)
           );
       return ctxMatrix;
     }),
-    (r.workingCanvas = function (e) {
+    (r.workingCanvas = function (callback) {
       var t =
-        e && e.__esModule
+        callback && callback.__esModule
           ? function () {
-            return e.default;
+            return callback.default;
           }
           : function () {
-            return e;
+            return callback;
           };
       return r.mousePos(t, "currentHighScore", t), t;
     }),
-    (r.ctxMatrix = function (e, t) {
-      return Object.prototype.hasOwnProperty.call(e, t);
+    (r.ctxMatrix = function (callback, t) {
+      return Object.prototype.hasOwnProperty.call(callback, t);
     }),
     (r.p = ""),
     r((r.restartImage = 0));
-})([
-  function (e, t) {
+}
+App([
+  function (callback, t) {
     window.onload = function () {
       (workingCanvas = document.querySelector("canvas")),
         (ctxMatrix = workingCanvas.getContext("2d")),
@@ -105,13 +125,13 @@
         ((localStorage._hscore = currentHighScore = 0),
           (localStorage._scoreResetSept2018 = !0)),
         (function () {
-          clearInterval(e), clearInterval(t);
+          clearInterval(callback), clearInterval(t);
           try {
             document.removeEventListener("keydown", D),
               document.removeEventListener("keyup", D),
               document.removeEventListener("mousedown", J);
-          } catch (e) {
-            console.error(e);
+          } catch (callback) {
+            console.error(callback);
           }
           !0,
             document.addEventListener("keydown", D),
@@ -120,8 +140,8 @@
             document.addEventListener("mousemove", z);
           try {
             hasGameEnded = JSON.parse(localStorage._end);
-          } catch (e) {
-            console.error(e), (hasGameEnded = !1);
+          } catch (callback) {
+            console.error(callback), (hasGameEnded = !1);
           }
           try {
             !(function () {
@@ -136,15 +156,15 @@
                     E(),
                     void (hasGameEnded = !1)
                   );
-              } catch (e) {
-                console.error(e), (currentHighScore = 0);
+              } catch (callback) {
+                console.error(callback), (currentHighScore = 0);
               }
               try {
                 null != localStorage._arena &&
                   "undefined" != localStorage._arena &&
                   (currentArena = JSON.parse(localStorage._arena));
-              } catch (e) {
-                console.error(e);
+              } catch (callback) {
+                console.error(callback);
               } finally {
                 null == currentArena &&
                   (currentArena = b(
@@ -163,12 +183,12 @@
                       ? (localStorage._score = 0)
                       : JSON.parse(localStorage._score)),
                   (N = JSON.parse(localStorage._player));
-              } catch (e) {
-                console.error(e);
+              } catch (callback) {
+                console.error(callback);
               }
             })();
-          } catch (e) {
-            console.error(e);
+          } catch (callback) {
+            console.error(callback);
           }
           (restartImage = new Image()),
             (restartImage.src = "../images/restart.png"),
@@ -176,7 +196,7 @@
             (pauseImage.src = "../images/pause.png"),
             (playImage = new Image()),
             (playImage.src = "../images/play.png");
-          var e = setInterval(C, 50),
+          var callback = setInterval(C, 50),
             t = setInterval(P, 1e3 / 12);
           null == N && E();
           requestAnimationFrame(createGameArena);
@@ -255,18 +275,18 @@
       v = 0,
       m = 0,
       w = 50 * speed;
-    function createGameArena(e = 0) {
+    function createGameArena(callback = 0) {
       if (
         (hasGameEnded &&
           (function () {
-            let e = "You hit the limit!",
+            let callback = "You hit the limit!",
               t = 0.05 * gridMatrix;
             (ctxMatrix.font = gridMatrix + "px monospace"),
               (ctxMatrix.fillStyle = "#ff5b5b"),
               ctxMatrix.fillText(
-                e,
+                callback,
                 workingCanvas.width / 2 -
-                ctxMatrix.measureText(e).width / 2 +
+                ctxMatrix.measureText(callback).width / 2 +
                 t,
                 8 * gridMatrix + t
               );
@@ -283,8 +303,8 @@
               (ctxMatrix.font = gridMatrix + "px monospace"),
               (ctxMatrix.fillStyle = "red"),
               ctxMatrix.fillText(
-                e,
-                workingCanvas.width / 2 - ctxMatrix.measureText(e).width / 2,
+                callback,
+                workingCanvas.width / 2 - ctxMatrix.measureText(callback).width / 2,
                 8 * gridMatrix
               ),
               (ctxMatrix.font = 0.7 * gridMatrix + "px monospace"),
@@ -308,16 +328,16 @@
             y: N.y,
           }),
           F(),
-          (x = e - v),
-          (v = e),
+          (x = callback - v),
+          (v = callback),
           (m += x),
           m > w && !hasGameEnded && !p && (I(), (m = 0)),
           null == currentHighScore)
       )
         try {
           currentHighScore = localStorage._hscore;
-        } catch (e) {
-          console.error(e);
+        } catch (callback) {
+          console.error(callback);
         }
       null == currentHighScore && (currentHighScore = 0),
         (ctxMatrix.font = 2 * gridMatrix + "px monospace"),
@@ -379,9 +399,9 @@
                   gridMatrix + 2 * this.hoverSize
                 ))
               : (c = !1);
-          const e = p ? playImage : pauseImage;
+          const callback = p ? playImage : pauseImage;
           ctxMatrix.drawImage(
-            e,
+            callback,
             gridMatrix * this.offsetX,
             gridMatrix * this.offsetY,
             gridMatrix,
@@ -389,9 +409,9 @@
           );
         })(),
         (function () {
-          for (let e = currentArena.length - 1; e >= 0; e--)
-            currentArena[e].every((e) => e > 0) &&
-              (currentArena.splice(e, 1),
+          for (let callback = currentArena.length - 1; callback >= 0; callback--)
+            currentArena[callback].every((callback) => callback > 0) &&
+              (currentArena.splice(callback, 1),
                 currentArena.splice(
                   0,
                   0,
@@ -402,20 +422,20 @@
         })(),
         requestAnimationFrame(createGameArena);
     }
-    function b(e, t) {
+    function b(callback, t) {
       let r = [];
-      for (; t--;) r.push(new Array(e).fill(0));
+      for (; t--;) r.push(new Array(callback).fill(0));
       return r;
     }
-    function O(e, t) {
-      for (let workingCanvas = 0; workingCanvas < e.length; workingCanvas++)
+    function O(callback, t) {
+      for (let workingCanvas = 0; workingCanvas < callback.length; workingCanvas++)
         for (
           let currentArena = 0;
-          currentArena < e[workingCanvas].length;
+          currentArena < callback[workingCanvas].length;
           currentArena++
         )
-          0 !== e[workingCanvas][currentArena] &&
-            ((ctxMatrix.fillStyle = colors[e[workingCanvas][currentArena]]),
+          0 !== callback[workingCanvas][currentArena] &&
+            ((ctxMatrix.fillStyle = colors[callback[workingCanvas][currentArena]]),
               ctxMatrix.fillRect(
                 (t.x + currentArena) * gridMatrix,
                 (t.y + workingCanvas) * gridMatrix,
@@ -423,10 +443,10 @@
                 gridMatrix
               ));
     }
-    function k(e, t) {
-      for (let t = 0; t < e.length; ++t)
-        for (let r = 0; r < t; ++r) [e[r][t], e[t][r]] = [e[t][r], e[r][t]];
-      t > 0 ? e.forEach((e) => e.reverse()) : e.reverse();
+    function k(callback, t) {
+      for (let t = 0; t < callback.length; ++t)
+        for (let r = 0; r < t; ++r) [callback[r][t], callback[t][r]] = [callback[t][r], callback[r][t]];
+      t > 0 ? callback.forEach((callback) => callback.reverse()) : callback.reverse();
     }
     function F() {
       try {
@@ -437,20 +457,20 @@
           (localStorage._score = JSON.stringify(currentScore)),
           (localStorage._arena = JSON.stringify(currentArena)),
           (localStorage._player = JSON.stringify(N));
-      } catch (e) { }
+      } catch (callback) { }
     }
-    function z(e) {
+    function z(callback) {
       const t = window.getComputedStyle(workingCanvas),
         r = parseInt(t.width),
         ctxMatrix = parseInt(t.height),
         gridMatrix = workingCanvas.width / r,
         currentArena = workingCanvas.height / ctxMatrix;
       let currentHighScore = workingCanvas.getBoundingClientRect();
-      (mousePos.x = (e.clientX - currentHighScore.left) * gridMatrix),
-        (mousePos.y = (e.clientY - currentHighScore.top) * currentArena),
+      (mousePos.x = (callback.clientX - currentHighScore.left) * gridMatrix),
+        (mousePos.y = (callback.clientY - currentHighScore.top) * currentArena),
         localStorage.setItem("mouse", JSON.stringify(mousePos));
     }
-    function J(e) {
+    function J(callback) {
       y ? Y(!0) : c && ((p = !p), (up = L = j = X = !1));
     }
     var N = {
@@ -460,11 +480,11 @@
       shape: shapes[Math.round(Math.random() * (shapes.length - 1))],
     };
     function T() {
-      let e = N.shape;
-      for (let t = 0; t < e.length; t++)
-        for (let r = 0; r < e[t].length; r++)
+      let callback = N.shape;
+      for (let t = 0; t < callback.length; t++)
+        for (let r = 0; r < callback[t].length; r++)
           if (
-            0 !== e[t][r] &&
+            0 !== callback[t][r] &&
             currentArena[N.y + t] &&
             0 !== currentArena[N.y + t][N.x + r]
           )
@@ -484,8 +504,8 @@
         if (
           ((currentScore += 10),
             N.y--,
-            (function (e, t) {
-              const r = e.shape;
+            (function (callback, t) {
+              const r = callback.shape;
               for (let ctxMatrix = 0; ctxMatrix < r.length; ctxMatrix++)
                 for (
                   let workingCanvas = 0;
@@ -497,17 +517,17 @@
                     0 !== r[ctxMatrix][workingCanvas]
                   )
                     try {
-                      t[e.y + ctxMatrix][e.x + workingCanvas] =
+                      t[callback.y + ctxMatrix][callback.x + workingCanvas] =
                         r[ctxMatrix][workingCanvas];
-                    } catch (e) {
-                      console.error(e);
+                    } catch (callback) {
+                      console.error(callback);
                     }
             })(N, currentArena),
-            (function (e) {
+            (function (callback) {
               let t = 0;
               return (
-                e.forEach((e) => {
-                  t += e;
+                callback.forEach((callback) => {
+                  t += callback;
                 }),
                 t
               );
@@ -531,34 +551,34 @@
         (N.start_x = N.x),
         (S = 75);
     }
-    function A(e) {
+    function A(callback) {
       let t = 0;
-      for (let r = e.length - 1; r >= 0; r--) {
-        for (let ctxMatrix = 0; ctxMatrix < e[r].length; ctxMatrix++)
-          if (0 !== e[r][ctxMatrix]) return t;
+      for (let r = callback.length - 1; r >= 0; r--) {
+        for (let ctxMatrix = 0; ctxMatrix < callback[r].length; ctxMatrix++)
+          if (0 !== callback[r][ctxMatrix]) return t;
         t++;
       }
       return t;
     }
-    function M(e) {
+    function M(callback) {
       let t = 0;
-      for (let r = e.length - 1; r >= 0; r--) {
-        for (let ctxMatrix = 0; ctxMatrix < e.length; ctxMatrix++)
-          if (0 !== e[ctxMatrix][r]) return t;
+      for (let r = callback.length - 1; r >= 0; r--) {
+        for (let ctxMatrix = 0; ctxMatrix < callback.length; ctxMatrix++)
+          if (0 !== callback[ctxMatrix][r]) return t;
         t++;
       }
       return t;
     }
-    function R(e) {
+    function R(callback) {
       let t = 0;
-      for (let r = 0; r < e.length; r++) {
-        for (let ctxMatrix = 0; ctxMatrix < e.length; ctxMatrix++)
-          if (0 !== e[ctxMatrix][r]) return t;
+      for (let r = 0; r < callback.length; r++) {
+        for (let ctxMatrix = 0; ctxMatrix < callback.length; ctxMatrix++)
+          if (0 !== callback[ctxMatrix][r]) return t;
         t++;
       }
       return t;
     }
-    function Y(e) {
+    function Y(callback) {
       (j = L = X = !1),
         F(),
         (hasGameEnded = !0),
@@ -569,7 +589,7 @@
             workingCanvas.height / gridMatrix
           ).slice(0)
         )),
-        e && location.reload();
+        callback && location.reload();
     }
     var j = !1,
       L = !1,
@@ -580,24 +600,24 @@
     function P() {
       j && !p ? (N.x--, T() && N.x++) : X && !p && (N.x++, T() && N.x--);
     }
-    function D(e) {
+    function D(callback) {
       if (hasGameEnded) Y(!0);
       else {
         if (p) return;
-        if ("keydown" == e.type)
-          switch (e.keyCode) {
+        if ("keydown" == callback.type)
+          switch (callback.keyCode) {
             case 87:
             case 38:
-              !(function (e) {
+              !(function (callback) {
                 const t = N.x;
                 let r = 1;
-                for (k(N.shape, e); T();)
+                for (k(N.shape, callback); T();)
                   if (
                     ((N.x += r),
                       (r = -(r + (r > 0 ? 1 : -1))),
                       r > N.shape[0].length)
                   )
-                    return k(N.shape, -e), void (N.x = t);
+                    return k(N.shape, -callback), void (N.x = t);
               })(1);
               break;
             case 65:
@@ -620,8 +640,8 @@
                 y: -10,
               });
           }
-        else if ("keyup" == e.type)
-          switch (e.keyCode) {
+        else if ("keyup" == callback.type)
+          switch (callback.keyCode) {
             case 65:
             case 37:
               j = !1;
@@ -638,3 +658,4 @@
     }
   },
 ]);
+}
