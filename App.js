@@ -30,8 +30,6 @@ Other:{
     }).then((response) => {
       // idk
     });
-    
-
     userSpan_.textContent = userCount;
   })();
 }
