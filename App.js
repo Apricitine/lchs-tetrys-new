@@ -115,6 +115,7 @@ function App(callback) {
 }
 App([
   function (callback, t) {
+    // initialization for when the extension is loaded
     window.onload = function () {
       (workingCanvas = document.querySelector("canvas")),
         (ctxMatrix = workingCanvas.getContext("2d")),
@@ -200,7 +201,7 @@ App([
           requestAnimationFrame(createGameArena);
         })();
     };
-    //const r = [null, "#e84a4a", "#e89c4a", "#e8db4a", "#9ce84a", "#4ae86c", "#4ae8c6", "#4a89e8"];
+    // the colors for the blocks
     const colors = [
       null,
       "#ff8fb4",
@@ -211,43 +212,57 @@ App([
       "#c587ff",
       "#91f6ff",
     ];
+    // The array that contains all of the shapes
+    /** Here's how the shapes array works:
+     * Each indice of the first-dimensional array contains a specific shape
+     * 
+     * 
+     */
     (shapes = [
+      // the "T" shaped block
       [
         [1, 1, 1],
         [0, 1, 0],
         [0, 0, 0],
       ],
+      // the square shaped block
       [
         [2, 2],
         [2, 2],
       ],
+      // The op line block
       [
         [0, 0, 3, 0],
         [0, 0, 3, 0],
         [0, 0, 3, 0],
         [0, 0, 3, 0],
       ],
+      // The "L" block
       [
         [0, 4, 0],
         [0, 4, 0],
         [0, 4, 4],
       ],
+      // The backwards L block
       [
         [0, 5, 0],
         [0, 5, 0],
         [5, 5, 0],
       ],
+      // forward facing ridge block
       [
         [0, 6, 6],
         [6, 6, 0],
         [0, 0, 0],
       ],
+      // backward facing ridge block
       [
         [7, 7, 0],
         [0, 7, 7],
         [0, 0, 0],
       ],
     ]),
+    // the speed of the blocks (no way!)
       (speed = 10);
     let ctxMatrix,
       workingCanvas,
@@ -276,7 +291,7 @@ App([
     function createGameArena(callback = 0) {
       if (
         (hasGameEnded &&
-          (function () {
+          (function () {  
             let callback = "You hit the limit!",
               t = 0.05 * gridMatrix;
             (ctxMatrix.font = gridMatrix + "px monospace"),
@@ -638,6 +653,7 @@ App([
                 y: -10,
               });
           }
+        // code to switch orientation of blocks
         else if ("keyup" == callback.type)
           switch (callback.keyCode) {
             case 65:
